@@ -11,10 +11,13 @@ module.exports = {
     devServer: {
         port: 3010,
         static: {
-            directory: path.join(__dirname, '/dist'),
+            directory: path.join(__dirname, '/public'),
         },
         hot: true,
+        watchFiles: ['src/**/*'], // Watch files in src folder
         liveReload: true,
+        historyApiFallback: true, // Enable for React Router
+        allowedHosts: 'all',
         headers: {
             'Cache-Control': 'no-cache',
         },

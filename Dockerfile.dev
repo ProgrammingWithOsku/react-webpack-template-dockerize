@@ -1,0 +1,20 @@
+# Use Node.js image for development
+FROM node:18
+
+WORKDIR /app
+
+# Copy package.json and package-lock.json for dependency installation
+COPY package.json ./ 
+COPY package-lock.json ./
+
+# Install all dependencies, including devDependencies
+RUN npm install
+
+# Copy the rest of your application code
+COPY . .
+
+# Expose the Webpack Dev Server port
+EXPOSE 3010
+
+# Start the development server with hot-reloading
+CMD ["npm", "run", "serve"]
